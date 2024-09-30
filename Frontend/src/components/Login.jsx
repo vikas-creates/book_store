@@ -58,13 +58,13 @@ const Login = () => {
         <h3 className="font-bold text-lg">Login</h3>
 
         {/* Email */}
-        <div className='mt-4 space-y-2'>
+        <div className='mt-4 space-y-2 '>
             <span>Email</span>
             <br />
             <input 
             type='email' 
             placeholder='Enter your email' 
-            className='w-80 px-3 py-1 border rounded-md outline-none' 
+            className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white' 
             {...register('email', { required: true })}/>
             <br />
             {errors.email && <span className="text-sm text-red-500">Email is required</span>}
@@ -76,7 +76,7 @@ const Login = () => {
             <input 
             type='password' 
             placeholder='Enter your Password' 
-            className='w-80 px-3 py-1 border rounded-md outline-none' 
+            className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white' 
             {...register('password', { required: true })}/>
             <br />
             {errors.password && <span className="text-sm text-red-500">Password is required</span>}

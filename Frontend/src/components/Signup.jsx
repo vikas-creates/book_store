@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import toast from 'react-hot-Toast';
+import toast from 'react-hot-Toast'
 
 
 const Login = () => {
@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <div>
-      <h3 className="font-bold text-lg">Login</h3>
+      <h3 className="font-bold text-lg ">Login</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Email */}
         <div className='mt-4 space-y-2'>
@@ -51,7 +51,7 @@ const Login = () => {
           <input
             type='email'
             placeholder='Enter your email'
-            className='w-80 px-3 py-1 border rounded-md outline-none'
+            className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white'
             {...register('email', { required: true })}
           />
           {errors.email && <span className="text-red-500">Email is required</span>}
@@ -64,7 +64,7 @@ const Login = () => {
           <input
             type='password'
             placeholder='Enter your Password'
-            className='w-80 px-3 py-1 border rounded-md outline-none'
+            className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white'
             {...register('password', { required: true })}
           />
           {errors.password && <span className="text-red-500">Password is required</span>}
@@ -145,7 +145,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder='Enter your Full Name'
-                className='w-80 px-3 py-1 border rounded-md outline-none'
+                className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white'
                 {...register('fullname', { required: true })}
               />
               {errors.fullname && <span className="text-sm text-red-500">Name is required</span>}
@@ -158,7 +158,7 @@ const Signup = () => {
               <input
                 type="email"
                 placeholder='Enter your email'
-                className='w-80 px-3 py-1 border rounded-md outline-none'
+                className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white'
                 {...register('email', { required: true })}
               />
               {errors.email && <span className="text-sm text-red-500">Email is required</span>}
@@ -171,7 +171,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder='Enter your Password'
-                className='w-80 px-3 py-1 border rounded-md outline-none'
+                className='w-80 px-3 py-1 border rounded-md outline-none dark:bg-slate-900 dark:text-white'
                 {...register('password', { required: true })}
               />
               {errors.password && <span className="text-sm text-red-500">Password is required</span>}
@@ -199,8 +199,8 @@ const Signup = () => {
 
       {/* Login Modal */}
       {showLogin && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative">
+        <div className="fixed inset-0 bg-black opacity-15 z-6 flex items-center justify-center">
+          <div className= "dark:bg-slate-900 dark:text-white p-6 rounded-lg shadow-lg relative">
             {/* Close button for modal */}
             <button
               onClick={closeLoginModal}
@@ -209,7 +209,7 @@ const Signup = () => {
               ✕
             </button>
             {/* Login Form */}
-            <Login />
+            <Login/>
           </div>
         </div>
       )}

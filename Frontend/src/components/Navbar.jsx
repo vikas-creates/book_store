@@ -6,7 +6,12 @@ import { useAuth } from '../context/AuthProvider';
 const Navbar = () => {
 
   const [authUser, setAuthUser]=useAuth();
+
+  //Below code is used for to set theme 
   const[theme, setTheme]= useState(localStorage.getItem('theme')?localStorage.getItem('theme') : 'light') 
+  
+  //This line is used for to get a refernce in element of the root element,
+  //that means ye line html document ko select kr legi 
   const element =document.documentElement;
 
   useEffect(()=>{
@@ -22,6 +27,7 @@ const Navbar = () => {
 
     },[theme])
 
+//This is a method with some condition to stick the navbar when scrooling
   const [sticky, setSticky]= useState(false);
   useEffect(()=>{
     const handleScroll =()=>{
@@ -32,15 +38,20 @@ const Navbar = () => {
     }
     };
     window.addEventListener("scroll",handleScroll);
+
+    // This ensures that the scroll event listener is removed
+    // when the component unmounts, preventing unnecessary event handling.
     return()=>{
       window.removeEventListener("scroll",handleScroll);
     };
   },[]);
 
+//Passing the navbar item in the variable so that we will use it in a dynamic way
+//and in passed it anywhere with javascript
     const navItem = (<>
       <li><a href='/'>Home</a></li>
       <li><a href='course'>Course</a></li>
-      <li><a>Contact</a></li>
+      <li><a href='contact'>Contact</a></li>
       <li><a>About</a></li>
     </>)
   return (
@@ -83,13 +94,13 @@ const Navbar = () => {
     </ul>
   </div>
   <div className='hidden md:block'>
-  <label className="flex border rounded-md items-center gap-2 px-3 py-2">
-  <input type="text" className="grow outline-none bg-transparent" placeholder="Search" />
+  <label className="flex  items-center gap-2 px-3 py-2">
+  <input type="text" className="grow outline-none bg-transparent rounded-md" placeholder="Search" />
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
     fill="currentColor"
-    className="h-4 w-4 opacity-70">
+    className="h-7 w-7 opacity-70">
     <path
       fillRule="evenodd"
       d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
@@ -100,7 +111,7 @@ const Navbar = () => {
 
 <label className="swap swap-rotate">
   {/* this hidden checkbox controls the state */}
-  <input type="checkbox" className="theme-controller" value="synthwave" />
+  <input type="checkbox" className="theme-controller hidden" value="synthwave" />
 
   {/* sun icon */}
   <svg
