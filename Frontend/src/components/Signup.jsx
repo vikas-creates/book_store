@@ -6,7 +6,7 @@ import toast from 'react-hot-Toast'
 
 
 const Login = () => {
-
+  // const [showFirst, setShowFirst] = useState(true);
   const location = useLocation();
   const navigate=useNavigate()
   const from = location.state?.from?.pathname || "/";
@@ -40,10 +40,11 @@ const Login = () => {
     });
   }
 
+
   return (
-    <div>
+    <div className='bg-slate-1000 p-5 rounded-3xl'>
+      <form onSubmit={handleSubmit(onSubmit)} className='bg-slate-950 p-7 rounded-3xl'>
       <h3 className="font-bold text-lg ">Login</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
         {/* Email */}
         <div className='mt-4 space-y-2'>
           <span>Email</span>
@@ -83,6 +84,7 @@ const Login = () => {
 
 const Signup = () => {
   const [showLogin, setShowLogin] = useState(false); // Modal control
+  const [opacityClass, setOpacityClass] = useState('opacity-100'); 
   //use for redirection
   const location = useLocation();
   const navigate=useNavigate()
@@ -120,20 +122,25 @@ const Signup = () => {
  // const onSubmit = (data) => console.log(data);
 
   const openLoginModal = () => {
-    setShowLogin(true); // Open the login modal
+    setShowLogin(true);
+    handleOpacityChange() // Open the login modal
   };
 
   const closeLoginModal = () => {
     setShowLogin(false); // Close the login modal
+    handleOpacityChange()
   };
-
+  const handleOpacityChange = () => {
+    // Toggle between full opacity and 50% opacity
+    setOpacityClass(opacityClass === 'opacity-100' ? 'opacity-50' : 'opacity-100');
+  };
   return (
     <div className='flex h-screen items-center justify-center'>
       <div className="w-[600px]">
         <div className="modal-box">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className={`${opacityClass}`}>
             {/* Close button */}
-            <Link to='/' className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <Link to='/' className="  btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </Link>
             <h3 className="font-bold text-lg">Signup</h3>
@@ -199,12 +206,12 @@ const Signup = () => {
 
       {/* Login Modal */}
       {showLogin && (
-        <div className="fixed inset-0 bg-black opacity-15 z-6 flex items-center justify-center">
+        <div className="fixed inset-0  flex items-center justify-center">
           <div className= "dark:bg-slate-900 dark:text-white p-6 rounded-lg shadow-lg relative">
             {/* Close button for modal */}
             <button
               onClick={closeLoginModal}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              className="btn btn-sm btn-circle btn-ghost absolute right-14 top-14"
             >
               ✕
             </button>
